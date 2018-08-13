@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
  
 import Task from './Task.js';
+import Header from './header/Header.js';
 import { Button, Input } from 'antd';
  
 // App component - represents the whole app
