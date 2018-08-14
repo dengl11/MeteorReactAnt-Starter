@@ -1,4 +1,3 @@
-import { HTTP } from 'meteor/http'
 import { Meteor } from 'meteor/meteor';
 import { TopicCluster } from '/imports/db/collections.js';
 

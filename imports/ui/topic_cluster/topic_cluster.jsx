@@ -1,31 +1,64 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TopicCluster from '../../db/collections.js'
-import { Input, AutoComplete, Icon} from 'antd'
+import { TopicCluster } from '../../db/collections.js'
+import { Input, AutoComplete, Icon, Table} from 'antd'
 
 export default class TopicClusterComponent extends React.Component {
     
     state = {
-        dataSource: []
+        selector_dataSource: [],
+        table_dataSource: []
     }
+
+    selected = null
+
+    columns = [{
+        title: '',
+        dataIndex: 'distance',
+        key: 'distance',
+      }, {
+        title: 'Neighbors',
+        dataIndex: 'neighbors',
+        key: 'neighbors',
+      }];
     
     handleSearch = (value) => {
+        this.selected = null;
         this.setState({
-            dataSource: this.props.all_topics.filter((x)=>x.toLowerCase().includes(value))
+            selector_dataSource: this.props.all_topics.filter((x)=>x.toLowerCase().includes(value))
         });
     };
+
+
+    onSelectTopic = (value) => {
+        var obj = TopicCluster.findOne({"Topic": value});
+        this.selected = obj;
+        this.setState({table_datasource: obj.Neighbors.map((x, i) => {
+            return {
+                distance: i+1,
+                neighbors: x.join(' | '), 
+                key: i+1
+            };
+        })});
+    }
     
-    
+
     render() {
-        const { dataSource } = this.state;
         return (
             <div style={{marginTop: '8em'}}>
-            <AutoComplete dataSource={dataSource}
+
+            <AutoComplete dataSource={this.state.selector_dataSource}
             style={{width:"100%"}} 
             onSearch={this.handleSearch}
-            placeholder="Search for Topic">
+            onSelect={this.onSelectTopic}
+            placeholder="Search for Toic">
             <Input suffix={<Icon type="search" />} />
             </AutoComplete>
+            {
+                this.selected ? <Table dataSource={this.state.table_datasource} pagination={false} columns={this.columns} /> : null
+            }
+            
+
             </div>
         );
     }

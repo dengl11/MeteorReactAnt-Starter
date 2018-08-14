@@ -5,6 +5,6 @@ import { TopicCluster } from '/imports/db/collections.js';
 
 export default TopicClusterContainer = withTracker(({ id }) => {
     return {
-        all_topics: TopicCluster.find({}, {fields: {'Topic':1}}).fetch().map((x)=>x.Topic),
+        all_topics: TopicCluster.find({}, {fields: {'Topic':1}}).fetch().sort((x, y)=> x.Topic < y.Topic ? -1 : 1).map((x)=>x.Topic),
     };
 })(TopicClusterComponent);
