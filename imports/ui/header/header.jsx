@@ -21,13 +21,6 @@ export default class SiteHeader extends Component {
                         <Menu.Item key="entity">Entity Distribution</Menu.Item>
                     </Menu>
                 </Header>
-                {/* <Content style={{ padding: '0 50px', marginTop: 64 }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}>
-                        <Breadcrumb.Item>Cluster</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                    </Breadcrumb>
-                    <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>Content</div>
-                </Content> */}
             </Layout>
             );
     } 
