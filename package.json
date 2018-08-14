@@ -8,6 +8,8 @@
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.55",
     "@fancyapps/fancybox": "^3.3.5",
+    "@nivo/bar": "^0.42.1",
+    "@nivo/line": "^0.42.1",
     "antd": "^3.8.0",
     "history": "^4.7.2",
     "indexof": "0.0.1",

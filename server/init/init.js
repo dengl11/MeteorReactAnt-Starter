@@ -6,7 +6,7 @@ Meteor.startup(()=>{
 });
 
 init_db = ()=>{
-    var topic_clusters = JSON.parse(Assets.getText("100_clustering.json"));
+    var topic_clusters = JSON.parse(Assets.getText("10000_clustering.json"));
     TopicCluster.remove({});
     for (var key in topic_clusters) {
         if (topic_clusters.hasOwnProperty(key)) {
