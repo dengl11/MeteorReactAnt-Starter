@@ -1,4 +1,4 @@
 node_modules/
 *.swp
 .DS_Store
-private/10000_clustering.json
+private/10000_*
