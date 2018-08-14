@@ -10,18 +10,18 @@ export default class TopicClusterComponent extends React.Component {
         selector_dataSource: [],
         table_dataSource: []
     }
-
+    
     selected = null
-
+    
     columns = [{
         title: '',
         dataIndex: 'distance',
         key: 'distance',
-      }, {
+    }, {
         title: 'Neighbors',
         dataIndex: 'neighbors',
         key: 'neighbors',
-      }];
+    }];
     
     handleSearch = (value) => {
         this.selected = null;
@@ -30,8 +30,8 @@ export default class TopicClusterComponent extends React.Component {
             selector_dataSource: value ? this.props.all_topics.filter((x)=>x.toLowerCase().startsWith(value)) : []
         });
     };
-
-
+    
+    
     onSelectTopic = (value) => {
         var obj = TopicCluster.findOne({"Topic": value});
         this.selected = obj;
@@ -44,12 +44,12 @@ export default class TopicClusterComponent extends React.Component {
         })});
     }
     
-
+    
     render() {
         return (
             <div style={{marginTop: '8em'}}>
-
-            <AutoComplete dataSource={this.state.selector_dataSource}
+            
+            {/* <AutoComplete dataSource={this.state.selector_dataSource}
             style={{width:"100%"}} 
             onSearch={this.handleSearch}
             onSelect={this.onSelectTopic}
@@ -58,9 +58,14 @@ export default class TopicClusterComponent extends React.Component {
             </AutoComplete>
             {
                 this.selected ? <Table dataSource={this.state.table_datasource} pagination={false} columns={this.columns} /> : null
-            }
+            } */}
             
             <div style={{ height: 400 }}>
+<<<<<<< HEAD
+=======
+
+            
+>>>>>>> 3c1423ea1c99c06e6ac938a5d437fd6e83e4025d
             <ResponsiveLine
             data= {[
                 {
@@ -367,7 +372,6 @@ export default class TopicClusterComponent extends React.Component {
                 }
             ]}
             />
-            </div>
             </div>
         );
     }

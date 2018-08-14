@@ -7,12 +7,15 @@ Meteor.startup(()=>{
 });
 
 init_db = ()=>{
+<<<<<<< HEAD
     init_cluster();
     init_day_ratio();
 };
 
 
 init_cluster = () => {
+=======
+>>>>>>> 3c1423ea1c99c06e6ac938a5d437fd6e83e4025d
     var topic_clusters = JSON.parse(Assets.getText("10000_clustering.json"));
     TopicCluster.remove({});
     for (var key in topic_clusters) {
