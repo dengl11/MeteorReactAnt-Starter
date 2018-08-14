@@ -14,8 +14,8 @@ Meteor.startup(() => {
       <Router history={browserHistory}>
       <div>
       <SiteHeader/>
-      <div style={{ padding: '0 50px', marginTop: 64 }}>
-      <Route path="/" component={Overview}/>
+      <div style={{ padding: '0 5em', marginTop: '10em' }}>
+      <Route exact path="/" component={Overview}/>
       <Route path="/cluster" component={TopicClusterContainer}/>
       </div>
       </div>
