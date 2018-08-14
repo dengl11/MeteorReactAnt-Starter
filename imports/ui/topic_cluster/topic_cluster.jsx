@@ -24,8 +24,9 @@ export default class TopicClusterComponent extends React.Component {
     
     handleSearch = (value) => {
         this.selected = null;
+        value = value.toLowerCase();
         this.setState({
-            selector_dataSource: this.props.all_topics.filter((x)=>x.toLowerCase().includes(value))
+            selector_dataSource: value ? this.props.all_topics.filter((x)=>x.toLowerCase().startsWith(value)) : []
         });
     };
 
@@ -36,7 +37,7 @@ export default class TopicClusterComponent extends React.Component {
         this.setState({table_datasource: obj.Neighbors.map((x, i) => {
             return {
                 distance: i+1,
-                neighbors: x.join(' | '), 
+                neighbors: x.map((t)=>'(' + t + ')').join(' | '), 
                 key: i+1
             };
         })});

@@ -1,27 +1,42 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { NavLink, withRouter } from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout;
 
-export default class SiteHeader extends Component {
-
+class SiteHeader extends Component {
+    
+    linkTo(item) {
+    }
+    
     render() {
         return (
             <Layout>
-                <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-                    <div className="logo" />
-                    <Menu
-                        theme="dark"
-                        mode="horizontal"
-                        defaultSelectedKeys={['2']}
-                        style={{ lineHeight: '64px' }}
-                    >
-                        <Menu.Item key="overview">Overview</Menu.Item>
-                        <Menu.Item key="cluster">Topic Cluster</Menu.Item>
-                        <Menu.Item key="entity">Entity Distribution</Menu.Item>
-                    </Menu>
-                </Header>
+            <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+            <div className="logo" />
+            <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['cluster']}
+            style={{ lineHeight: '64px' }}
+            onClick={this.linkTo}
+            >
+            <Menu.Item key="/">
+            <NavLink to="/"> Overview </NavLink>
+            </Menu.Item>
+            
+            <Menu.Item key="/cluster">
+            <NavLink to="/cluster"> Topic Cluster </NavLink>
+            </Menu.Item>
+            
+            <Menu.Item key="entity">Entity Distribution</Menu.Item>
+            </Menu>
+            </Header>
             </Layout>
-            );
+        );
     } 
 }
+
+// export default SiteHeader;
+export default withRouter(SiteHeader);
